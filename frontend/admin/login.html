@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLASSIC NET - Admin Login</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+
+  <div class="container">
+    <div class="portal-card">
+      
+      <div class="header-brand">
+        <img src="../assets/logo.svg" alt="CLASSIC NET Logo" class="logo-img">
+        <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-top: 4px;">ISP Admin Portal</div>
+      </div>
+
+      <div id="loginAlert" style="display: none; background: #fee2e2; border: 1px solid #f87171; color: #b91c1c; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 16px;"></div>
+
+      <form id="adminLoginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label">Username or Email:</label>
+          <input type="text" id="adminUsername" class="input-phone" style="font-size: 15px; padding: 12px;" placeholder="admin@classicnet.tz" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password:</label>
+          <input type="password" id="adminPassword" class="input-phone" style="font-size: 15px; padding: 12px;" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-primary" id="loginBtn">
+          SIGN IN TO DASHBOARD
+        </button>
+      </form>
+
+      <div style="margin-top: 16px; font-size: 12px; color: #64748b; text-align: center;">
+        Default Credentials: <code>admin</code> / <code>ClassicNetAdmin2026!</code>
+      </div>
+
+      <div class="portal-footer">
+        <div><strong>CLASSIC NET</strong> Admin &amp; Hotspot Billing System</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || "/api";
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById("adminUsername").value.trim();
+      const password = document.getElementById("adminPassword").value.trim();
+      const btn = document.getElementById("loginBtn");
+      const alertBox = document.getElementById("loginAlert");
+
+      btn.disabled = true;
+      btn.innerText = "Authenticating...";
+      alertBox.style.display = "none";
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+
+        if (data.success && data.token) {
+          localStorage.setItem("classicnet_admin_token", data.token);
+          localStorage.setItem("classicnet_admin_user", JSON.stringify(data.admin));
+          window.location.href = "index.html";
+        } else {
+          alertBox.innerText = data.error || "Invalid username or password.";
+          alertBox.style.display = "block";
+          btn.disabled = false;
+          btn.innerText = "SIGN IN TO DASHBOARD";
+        }
+      } catch (err) {
+        alertBox.innerText = "Could not connect to authentication server.";
+        alertBox.style.display = "block";
+        btn.disabled = false;
+        btn.innerText = "SIGN IN TO DASHBOARD";
+      }
+    }
+  </script>
+</body>
+</html>

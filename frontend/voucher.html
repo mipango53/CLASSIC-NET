@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CLASSIC NET - Redeem Voucher</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="portal-card">
+      
+      <!-- Brand Header -->
+      <div class="header-brand">
+        <img src="assets/logo.svg" alt="CLASSIC NET Logo" class="logo-img">
+        <div class="brand-slogan">Fast • Simple • Reliable Internet</div>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <h1 style="font-size: 18px; font-weight: 800; color: #0f172a;">Redeem Prepaid Voucher</h1>
+        <p style="font-size: 13px; color: #64748b;">Enter the code on your physical voucher or scratch card</p>
+      </div>
+
+      <!-- Voucher Code Input -->
+      <div class="form-group">
+        <label class="form-label" for="voucherCodeInput">Voucher Code:</label>
+        <input 
+          type="text" 
+          id="voucherCodeInput" 
+          class="input-phone" 
+          placeholder="e.g. CN7K29X4P" 
+          style="text-transform: uppercase; font-family: monospace; letter-spacing: 2px;"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Phone Number Input -->
+      <div class="form-group">
+        <label class="form-label" for="voucherPhoneInput">Your Phone Number:</label>
+        <input 
+          type="tel" 
+          id="voucherPhoneInput" 
+          class="input-phone" 
+          placeholder="07XXXXXXXX or 06XXXXXXXX" 
+          maxlength="10"
+        >
+      </div>
+
+      <!-- Redeem Button -->
+      <button class="btn-primary" id="redeemBtn" onclick="redeemVoucher()">
+        ACTIVATE INTERNET
+      </button>
+
+      <a href="index.html" class="btn-secondary">
+        ← BACK TO MOBILE MONEY BUNDLES
+      </a>
+
+      <!-- Support Footer -->
+      <div class="portal-footer">
+        <div>Customer Support: <a href="tel:0618781830"><strong>0618781830</strong></a></div>
+        <div>Email: <a href="mailto:jacksonribent53@gmail.com">jacksonribent53@gmail.com</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

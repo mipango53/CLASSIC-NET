@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CLASSIC NET - Hotspot Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="portal-card" id="mainPortalCard">
+      
+      <!-- Brand Header -->
+      <div class="header-brand">
+        <img src="assets/logo.svg" alt="CLASSIC NET Logo" class="logo-img">
+        <div class="brand-slogan">Fast • Simple • Reliable Internet</div>
+      </div>
+
+      <!-- Welcome & Instruction -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h1 style="font-size: 18px; font-weight: 800; color: #0f172a;">Welcome to CLASSIC NET</h1>
+        <p style="font-size: 13px; color: #64748b;">Choose an internet bundle to get connected instantly</p>
+      </div>
+
+      <!-- Bundle Selection Section -->
+      <div class="section-title">1. Choose your internet package:</div>
+      <div class="bundle-grid" id="bundleContainer">
+        <!-- Bundles populated dynamically from API -->
+        <div class="bundle-card selected" id="bundle-1" onclick="selectBundle(1)">
+          <div class="bundle-info">
+            <div class="bundle-name">24 HOURS</div>
+            <div class="bundle-duration">24 Hours Validity</div>
+            <span class="badge-unlimited">Unlimited</span>
+          </div>
+          <div class="bundle-price">
+            <div class="price-val">TSH 1,000</div>
+            <div class="currency">Tanzanian Shillings</div>
+          </div>
+        </div>
+
+        <div class="bundle-card" id="bundle-2" onclick="selectBundle(2)">
+          <div class="bundle-info">
+            <div class="bundle-name">WEEK</div>
+            <div class="bundle-duration">7 Days Validity</div>
+            <span class="badge-unlimited">Unlimited</span>
+          </div>
+          <div class="bundle-price">
+            <div class="price-val">TSH 6,000</div>
+            <div class="currency">Tanzanian Shillings</div>
+          </div>
+        </div>
+
+        <div class="bundle-card" id="bundle-3" onclick="selectBundle(3)">
+          <div class="bundle-info">
+            <div class="bundle-name">MONTH</div>
+            <div class="bundle-duration">30 Days Validity</div>
+            <span class="badge-unlimited">Unlimited</span>
+          </div>
+          <div class="bundle-price">
+            <div class="price-val">TSH 22,000</div>
+            <div class="currency">Tanzanian Shillings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Number Input -->
+      <div class="form-group">
+        <label class="form-label" for="phoneInput">2. Enter Mobile Number (Tanzania):</label>
+        <input 
+          type="tel" 
+          id="phoneInput" 
+          class="input-phone" 
+          placeholder="07XXXXXXXX or 06XXXXXXXX" 
+          maxlength="10" 
+          autocomplete="tel"
+        >
+      </div>
+
+      <!-- Choose Network -->
+      <div class="section-title">3. Choose Network:</div>
+      <div class="network-grid">
+        <div class="network-btn selected" data-network="YAS" id="net-yas">
+          <img src="assets/yas.svg" alt="YAS Logo">
+        </div>
+        <div class="network-btn" data-network="AIRTEL" id="net-airtel">
+          <img src="assets/airtel.svg" alt="Airtel Logo">
+        </div>
+        <div class="network-btn" data-network="VODACOM" id="net-vodacom">
+          <img src="assets/vodacom.svg" alt="Vodacom Logo">
+        </div>
+        <div class="network-btn" data-network="HALOTEL" id="net-halotel">
+          <img src="assets/halotel.svg" alt="Halotel Logo">
+        </div>
+      </div>
+
+      <!-- Pay Now Button -->
+      <button class="btn-primary" id="payBtn" onclick="initiatePayment()">
+        PAY NOW
+      </button>
+
+      <!-- Alternative: Use Voucher -->
+      <a href="voucher.html" class="btn-secondary" id="useVoucherBtn">
+        🎟️ HAVE A VOUCHER? USE VOUCHER
+      </a>
+
+      <!-- Customer Support Footer -->
+      <div class="portal-footer">
+        <div><strong>CLASSIC NET</strong> • Fast • Simple • Reliable Internet</div>
+        <div style="margin-top: 4px;">
+          Customer Support: <a href="tel:0618781830"><strong>0618781830</strong></a>
+        </div>
+        <div>
+          Email: <a href="mailto:jacksonribent53@gmail.com">jacksonribent53@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

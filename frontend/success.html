@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CLASSIC NET - Internet Activated</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="portal-card">
+      
+      <!-- Brand Header -->
+      <div class="header-brand">
+        <img src="assets/logo.svg" alt="CLASSIC NET Logo" class="logo-img">
+        <div class="brand-slogan">Fast • Simple • Reliable Internet</div>
+      </div>
+
+      <!-- Success Content -->
+      <div class="status-box">
+        <div style="font-size: 58px; margin-bottom: 12px;">🎉</div>
+        <h2 class="status-title" style="color: #16a34a;">Payment Successful!</h2>
+        <p class="status-desc" style="font-size: 15px; color: #0f172a; font-weight: 700;">
+          Welcome to CLASSIC NET.<br>
+          <span style="color: #16a34a; font-weight: 600;">Your internet access has been activated.</span>
+        </p>
+
+        <!-- Activation Details Card -->
+        <div class="receipt-card">
+          <div class="receipt-row">
+            <span style="color:#64748b;">Transaction ID:</span>
+            <strong id="succTxnId">-</strong>
+          </div>
+          <div class="receipt-row">
+            <span style="color:#64748b;">Bundle:</span>
+            <strong id="succBundle">-</strong>
+          </div>
+          <div class="receipt-row">
+            <span style="color:#64748b;">Amount Paid:</span>
+            <strong id="succAmount">-</strong>
+          </div>
+          <div class="receipt-row">
+            <span style="color:#64748b;">Activation Time:</span>
+            <span id="succActivated">-</span>
+          </div>
+          <div class="receipt-row">
+            <span style="color:#64748b;">Expiry Time:</span>
+            <strong style="color:#dc2626;" id="succExpiry">-</strong>
+          </div>
+          <div class="receipt-row total">
+            <span>Status:</span>
+            <span style="color:#16a34a;">● ACTIVE &amp; CONNECTED</span>
+          </div>
+        </div>
+
+        <!-- Start Browsing Button -->
+        <a href="https://www.google.com" class="btn-primary" id="startBrowsingBtn" target="_blank" rel="noopener">
+          START BROWSING 🚀
+        </a>
+
+        <a href="index.html" class="btn-secondary" style="margin-top: 10px;">
+          Back to Portal
+        </a>
+      </div>
+
+      <!-- Support Footer -->
+      <div class="portal-footer">
+        <div><strong>CLASSIC NET</strong> Support: <a href="tel:0618781830"><strong>0618781830</strong></a></div>
+        <div>Email: <a href="mailto:jacksonribent53@gmail.com">jacksonribent53@gmail.com</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const txnId = urlParams.get("txn") || urlParams.get("code") || "CN-SUCCESS";
+      
+      let data = {};
+      const stored = sessionStorage.getItem("classicnet_success") || sessionStorage.getItem("classicnet_activation");
+      if (stored) {
+        try { data = JSON.parse(stored); } catch (e) {}
+      }
+
+      document.getElementById("succTxnId").innerText = data.transaction_uuid || txnId;
+      document.getElementById("succBundle").innerText = data.bundle_name || data.bundle || "Unlimited Package";
+      document.getElementById("succAmount").innerText = data.amount_tsh ? ("TSH " + Number(data.amount_tsh).toLocaleString()) : "PAID";
+      document.getElementById("succActivated").innerText = data.activated_at || new Date().toLocaleString();
+      document.getElementById("succExpiry").innerText = data.expires_at || "Calculated based on bundle validity";
+    });
+  </script>
+</body>
+</html>

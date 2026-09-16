@@ -1,0 +1,6 @@
+{
+  "name": "CLASSIC NET - Hotspot Billing System",
+  "description": "Automatic hotspot billing system with AzamPay USSD push, MikroTik RouterOS integration, bundle management, vouchers, and admin dashboard for Tanzanian ISPs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
